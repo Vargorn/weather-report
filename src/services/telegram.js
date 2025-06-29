@@ -1,9 +1,13 @@
-export const sendWeatherMessage = async (text, chatIds) => {
+import axios from 'axios';
+import { telegramConfig } from '../config.js';
+import logger from './logger.js';
+
+export const sendWeatherMessage = async (text) => {
   try {
     logger.info('Sending Telegram messages...');
-
+    const ids = telegramConfig.chatIds.split(',')
     const results = await Promise.all(
-      chatIds.map(async (chatId) => {
+      ids.map(async (chatId) => {
         const response = await axios.post(
           `${telegramConfig.apiUrl}${telegramConfig.botToken}/sendMessage`,
           {
