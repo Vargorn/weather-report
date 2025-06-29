@@ -5,7 +5,7 @@ import logger from './logger.js';
 export const sendWeatherMessage = async (text) => {
   try {
     logger.info('Sending Telegram messages...');
-    const ids = telegramConfig.chatIds.split(',')
+    const ids = telegramConfig.chatIds
     const results = await Promise.all(
       ids.map(async (chatId) => {
         const response = await axios.post(
