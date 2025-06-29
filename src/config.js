@@ -3,9 +3,10 @@ dotenv.config();
 
 export const telegramConfig = {
   botToken: process.env.TELEGRAM_BOT_TOKEN,
-  chatId: process.env.TELEGRAM_CHAT_ID,
+  chatIds: process.env.RECIPIENT_CHAT_IDS?.split(',') || [],
   apiUrl: 'https://api.telegram.org/bot'
 };
+
 
 export const weatherConfig = {
   yandexWeatherUrl: 'https://yandex.by/pogoda/ru/minsk?lat=53.902735&lon=27.555691',
